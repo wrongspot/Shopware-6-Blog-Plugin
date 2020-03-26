@@ -16,11 +16,11 @@ class BlogEntriesEntity extends Entity
 
 
     protected $slug;
-    
+
     protected $teaser;
 
     /**
-     * @var string
+     * @var array
      */
     protected $content;
 
@@ -78,17 +78,17 @@ class BlogEntriesEntity extends Entity
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getContent(): string
+    public function getContent(): array
     {
         return $this->content;
     }
 
     /**
-     * @param string $content
+     * @param array $content
      */
-    public function setContent(string $content): void
+    public function setContent(array $content): void
     {
         $this->content = $content;
     }

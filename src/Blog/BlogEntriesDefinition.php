@@ -8,6 +8,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IntField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\JsonField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\LongTextField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
@@ -49,7 +50,7 @@ class BlogEntriesDefinition extends EntityDefinition
             new StringField('title', 'title'),
             new StringField('slug', 'slug'),
             new StringField('teaser', 'teaser'),
-            new LongTextField('content', 'content')
+            new JsonField('content', 'content')
         ]);
     }
 }

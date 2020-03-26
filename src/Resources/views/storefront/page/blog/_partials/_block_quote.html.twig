@@ -1,0 +1,14 @@
+<blockquote class="blockquote text-{{ block.data.alignment }}">
+
+    {% if block.data.text|length %}
+        <p class="mb-0">
+            {{ block.data.text|raw}}
+        </p>
+    {% endif %}
+
+    {% if block.data.caption|length %}
+        <footer class="blockquote-footer">
+            <cite title="{{ block.data.caption|raw }}">{{ block.data.caption|raw }}</cite>
+        </footer>
+    {% endif %}
+</blockquote>

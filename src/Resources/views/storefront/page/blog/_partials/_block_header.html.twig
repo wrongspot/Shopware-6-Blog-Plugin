@@ -1,0 +1,7 @@
+{% set heading_level = block.data.level | default(2) %}
+
+{% block sas_blog_partial_heading %}
+    <h{{heading_level}} class="sas-blog-heading level-{{ heading_level }}">
+        {{ block.data.text }}
+    </h{{heading_level}}>
+{% endblock %}

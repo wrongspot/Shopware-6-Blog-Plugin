@@ -1,6 +1,12 @@
 {% block sw_cms_element_blog_config %}
 <div class="sw-cms-el-config-blog">
+    <sw-number-field numberType="float" value="100" :digits="2" label="Truncate text" placeholder="100" v-model="element.config.truncate.value"></sw-number-field>
 
-
+    <sw-select-field placeholder="Select your column" label="Columns" v-model="element.config.columns.value">
+        <option value="12">1</option>
+        <option value="6">2</option>
+        <option value="4">3</option>
+        <option value="3">4</option>
+    </sw-select-field>
 </div>
 {% endblock %}

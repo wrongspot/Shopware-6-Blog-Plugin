@@ -3,7 +3,8 @@
 {% block base_content %}
 <div class="row justify-content-center">
     {% block page_blog_detail %}
-        <article class="col-8 mt-5 pt-5 text-center">
+
+        <article class="col-8 mt-5 text-center">
 
             {% block page_blog_detail_title %}
                 <h1 class="mb-5">{{ entry.title }}</h1>
@@ -11,7 +12,9 @@
 
             {% block page_blog_detail_content %}
                 <div class="sas-blog-content">
-                    {{ entry.content|raw }}
+                    {% for block in entry.content.blocks %}
+                        {% sw_include('@Storefront/storefront/page/blog/_partials/_block_' ~ block.type) ~ '.html.twig' %}
+                    {% endfor %}
                 </div>
             {% endblock %}
 

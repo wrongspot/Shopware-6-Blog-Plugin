@@ -1,16 +1,22 @@
 {% block element_blog %}
-    <div class="cms-element-blog">
+    <div class="sas-cms-element-blog">
        <div class="row">
            {% if element.data.blog|length %}
                {% for entry in element.data.blog %}
-                   <div class="col-12">
-                       <article class="card mt-5">
-                           <a href="{{ path('sas.frontend.blog.detail', { slug: entry.slug }) }}">
+                   <div class="col-{{ element.config.columns.value }}">
+                       <article class="card mb-5">
                                <div class="card-body">
-                                   <h2 class="card-title">{{ entry.title }}</h2>
-                                   {{ entry.content|raw }}
+                                   <h2 class="card-title">
+                                       <a href="{{ path('sas.frontend.blog.detail', { slug: entry.slug }) }}">
+                                           {{ entry.title }}
+                                       </a>
+                                   </h2>
+                                   <div class="card-text">
+                                       {% for block in entry.content.blocks %}
+                                           {% sw_include('@Storefront/storefront/page/blog/_partials/_block_' ~ block.type) ~ '.html.twig' %}
+                                       {% endfor %}
+                                   </div>
                                </div>
-                           </a>
                        </article>
                    </div>
                {% endfor %}
