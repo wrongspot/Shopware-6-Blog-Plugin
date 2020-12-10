@@ -11,7 +11,6 @@ Component.extend('sas-blog-create', 'sas-blog-detail', {
     methods: {
         getBlog() {
             this.blog = this.repository.create(Shopware.Context.api);
-            this.editorPro();
             this.isLoading = false;
         }
     }

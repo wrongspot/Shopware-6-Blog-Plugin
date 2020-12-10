@@ -4,19 +4,6 @@ import Criteria from 'src/core/data-new/criteria.data';
 import './sas-blog-detail.scss';
 
 import slugify from 'slugify';
-import EditorJS from "@editorjs/editorjs";
-import Header from "@editorjs/header";
-import List from "@editorjs/list";
-import Marker from "@editorjs/marker";
-import Paragraph from "@editorjs/paragraph";
-import Warning from "@editorjs/warning";
-import Table from "@editorjs/table";
-import Quote from "@editorjs/quote";
-import Embed from '@editorjs/embed'
-import SimpleImage from '@editorjs/simple-image';
-import Delimiter from '@editorjs/delimiter';
-import RawTool from '@editorjs/raw';
-import InlineCode from '@editorjs/inline-code';
 
 const { mapPropertyErrors } = Shopware.Component.getComponentHelper();
 
@@ -64,13 +51,6 @@ Component.register('sas-blog-detail', {
     },
 
     computed: {
-        tooltipCancel() {
-            return {
-                message: 'ESC',
-                appearance: 'light'
-            };
-        },
-
         mediaItem() {
             return this.blog !== null ? this.blog.media : null;
         },
@@ -92,15 +72,10 @@ Component.register('sas-blog-detail', {
                 .then((entity) => {
                     this.blog = entity;
                     this.isLoading = false;
-                })
-                .then( () => {
-                    this.editorPro();
                 });
         },
 
         changeLanguage() {
-            this.getBlog();
-            editor.isReady .then(() => { editor.destroy(); });
             this.getBlog();
         },
 
@@ -111,83 +86,6 @@ Component.register('sas-blog-detail', {
                 const remainCharacters = this.maxMetaTitleCharacters - this.blog.metaTitle.length;
                 this.remainMetaTitleCharactersText = `${remainCharacters} characters left.`;
             }
-        },
-
-        editorPro() {
-            const editor = new EditorJS({
-                holder: `blog-editor`,
-                autofocus: true,
-                initialBlock: "paragraph",
-                tools: {
-                    header: {
-                        class: Header,
-                        shortcut: "CMD+SHIFT+H",
-                        config: {
-                            placeholder: this.$tc('sas-blog.detail.editor.headerPlaceholder'),
-                            levels: [2, 3, 4, 5, 6],
-                            defaultLevel: 3
-                        }
-                    },
-                    list: {
-                        class: List
-                    },
-                    inlineCode: {
-                        class: InlineCode,
-                        shortcut: 'CMD+SHIFT+M',
-                    },
-                    paragraph: {
-                        class: Paragraph,
-                        config: {
-                            placeholder: this.$tc('sas-blog.detail.editor.paragraphPlaceholder')
-                        }
-                    },
-                    warning: {
-                        class: Warning,
-                        inlineToolbar: true,
-                        shortcut: 'CMD+SHIFT+W',
-                        config: {
-                            titlePlaceholder: this.$tc('sas-blog.detail.editor.warningTitle'),
-                            messagePlaceholder: this.$tc('sas-blog.detail.editor.warningMessage'),
-                        },
-                    },
-                    Marker: {
-                        class: Marker,
-                        shortcut: 'CMD+SHIFT+M',
-                    },
-                    image: SimpleImage,
-                    delimiter: Delimiter,
-                    raw: RawTool,
-                    table: {
-                        class: Table,
-                        inlineToolbar: true,
-                        config: {
-                            rows: 2,
-                            cols: 3,
-                        },
-                    },
-                    quote: {
-                        class: Quote,
-                        inlineToolbar: true,
-                        shortcut: 'CMD+SHIFT+O',
-                        config: {
-                            quotePlaceholder: this.$tc('sas-blog.detail.editor.quotePlaceholder'),
-                            captionPlaceholder: this.$tc('sas-blog.detail.editor.quoteCaption'),
-                        },
-                    },
-                    embed: Embed
-                },
-                data: this.blog.content,
-                onChange: (data) => {
-                    editor.save().then((outputData) => {
-                        this.blog.content = outputData;
-                    }).catch((error) => {
-                        this.createNotificationError({
-                            title: 'ERROR',
-                            message: error
-                        });
-                    });
-                }
-            });
         },
 
         onClickSave() {

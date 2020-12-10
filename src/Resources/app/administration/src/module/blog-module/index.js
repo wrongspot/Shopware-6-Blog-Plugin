@@ -32,6 +32,7 @@ import './blocks/detail';
  */
 import './elements/blog-detail';
 import './elements/blog';
+import './elements/blog-single-select';
 
 /**
  * Blog Category
