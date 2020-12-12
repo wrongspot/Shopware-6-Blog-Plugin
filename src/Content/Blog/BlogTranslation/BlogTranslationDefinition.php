@@ -3,6 +3,7 @@ namespace Sas\BlogModule\Content\Blog\BlogTranslation;
 
 use Sas\BlogModule\Content\Blog\BlogEntriesDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityTranslationDefinition;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\AllowHtml;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\JsonField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\LongTextField;
@@ -39,7 +40,7 @@ class BlogTranslationDefinition extends EntityTranslationDefinition
             new StringField('teaser', 'teaser'),
             new StringField('meta_title', 'metaTitle'),
             new StringField('meta_description', 'metaDescription'),
-            new LongTextField('content', 'content'),
+            (new LongTextField('content', 'content'))->addFlags(new AllowHtml()),
         ]);
     }
 }
