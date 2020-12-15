@@ -1,5 +1,7 @@
 import { Module } from 'src/core/shopware';
 
+import './component/editorjs';
+
 /**
  * Extensions
  */
@@ -55,7 +57,7 @@ Module.register('blog-module', {
     type: 'plugin',
     name: 'Blog',
     title: 'sas-blog.general.mainMenuItemGeneral',
-    description: 'sas-blog.general.descriptionTextModule',
+    description: 'Description for your custom module',
     color: '#62ff80',
     icon: 'default-object-lab-flask',
 
