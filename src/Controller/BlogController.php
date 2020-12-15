@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
 namespace Sas\BlogModule\Controller;
 
+use Sas\BlogModule\Content\Blog\BlogEntriesEntity;
 use Shopware\Core\Content\Cms\Exception\PageNotFoundException;
-use Shopware\Core\Content\Cms\SalesChannel\SalesChannelCmsPageLoader;
+use Shopware\Core\Content\Cms\SalesChannel\SalesChannelCmsPageLoaderInterface;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\Routing\Annotation\RouteScope;
@@ -26,7 +27,7 @@ class BlogController extends StorefrontController
      */
     private $genericPageLoader;
     /**
-     * @var SalesChannelCmsPageLoader
+     * @var SalesChannelCmsPageLoaderInterface
      */
     private $cmsPageLoader;
 
@@ -35,7 +36,7 @@ class BlogController extends StorefrontController
      */
     private $systemConfigService;
 
-    public function __construct(SystemConfigService $systemConfigService, GenericPageLoader $genericPageLoader, SalesChannelCmsPageLoader $cmsPageLoader)
+    public function __construct(SystemConfigService $systemConfigService, GenericPageLoader $genericPageLoader, SalesChannelCmsPageLoaderInterface $cmsPageLoader)
     {
         $this->systemConfigService = $systemConfigService;
         $this->genericPageLoader = $genericPageLoader;
@@ -56,7 +57,11 @@ class BlogController extends StorefrontController
 
         $criteria = new Criteria([$articleId]);
 
+        $criteria->addAssociations(['author.salutation', 'blogCategories']);
+
         $results = $blogRepository->search($criteria, $context->getContext())->getEntities();
+
+        /** @var BlogEntriesEntity $entry */
         $entry = $results->first();
 
         if (!$entry) {
@@ -65,11 +70,16 @@ class BlogController extends StorefrontController
 
         $pages = $this->cmsPageLoader->load(
             $request,
-            new Criteria([$this->systemConfigService->get('BlogModule.config.cmsBlogDetailPage')]),
+            new Criteria([$this->systemConfigService->get('SasBlogModule.config.cmsBlogDetailPage')]),
             $context
         );
 
         $page->setCmsPage($pages->first());
+        $metaInformation = $page->getMetaInformation();
+
+        $metaInformation->setAuthor($entry->getAuthor()->getTranslated()['name']);
+
+        $page->setMetaInformation($metaInformation);
 
         return $this->renderStorefront('@Storefront/storefront/page/content/index.html.twig', [
             'page'  => $page,

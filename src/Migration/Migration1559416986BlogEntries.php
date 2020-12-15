@@ -20,6 +20,7 @@ class Migration1559416986BlogEntries extends MigrationStep
             CREATE TABLE IF NOT EXISTS `sas_blog_entries` (
             `id` BINARY(16) NOT NULL,
             `active` TINYINT DEFAULT 0,
+            `detail_teaser_image` TINYINT DEFAULT 1,
             `created_at` DATETIME(3) NOT NULL,
             `updated_at` DATETIME(3) NULL,
             PRIMARY KEY (`id`)
@@ -37,7 +38,7 @@ class Migration1559416986BlogEntries extends MigrationStep
             `teaser` VARCHAR(255) NULL,
             `meta_title` VARCHAR(255) NULL,
             `meta_description` VARCHAR(255) NULL,
-            `content` JSON NULL,
+            `content` MEDIUMTEXT COLLATE utf8mb4_unicode_ci NULL,
             `created_at` DATETIME(3) NOT NULL,
             `updated_at` DATETIME(3) NULL,
             PRIMARY KEY (`sas_blog_entries_id`, `language_id`),
@@ -56,7 +57,7 @@ class Migration1559416986BlogEntries extends MigrationStep
             'id'         => Uuid::randomBytes(),
             'routeName'  => 'sas.frontend.blog.detail',
             'entityName' => 'sas_blog_entries',
-            'template'   => 'Blog/{{ entry.title }}',
+            'template'   => 'blog/{{ entry.title|lower }}',
             'createdAt'  => (new \DateTime())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
         ]);
     }

@@ -1,3 +1,24 @@
+# 1.2.1
+* removed editor.js
+* added missing description translation
+
+# 1.2.0
+* Replaced editor.js with Shopware's default text editor
+* Added `Blog Single Select` CMS element, to show a single blog entry card
+* Added counter for meta title and description
+* Fixed JSON-LD SEO template
+* Prepared plugin base for the Blog PRO version
+
+# 1.1.5
+* Added missing German author translations
+
+# 1.1.4
+* Added author entity
+* Added category entity
+
+# 1.1.3
+* changed `SalesChannelCmsPageLoader` to `SalesChannelCmsPageLoaderInterface` in `BlogController`
+
 # 1.1.2
 * fixed Blog Plugin kills all meta-Infos from all other pages #20
 * fixed Stay on blogpost when saving #14

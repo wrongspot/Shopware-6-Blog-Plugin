@@ -13,7 +13,8 @@
             "messageEmpty": "Keine Einträge vorhanden",
             "table": {
                 "title": "Titel",
-                "active": "Aktiv"
+                "active": "Aktiv",
+                "author": "Autor"
             }
         },
         "detail": {
@@ -28,6 +29,14 @@
             "teaserImageLabel": "Teaser Bild",
             "teaserPlaceholder": "Der Teaser Text, welcher im Blog Listing angezeigt wird ...",
             "editorCardTitle": "Dein Artikel",
+            "editorLabel": "Blog Inhalt",
+            "editorPlaceholder": "Starte deinen Blog Beitrag ...",
+            "visibility": {
+                "label": "Artikel aktiv"
+            },
+            "detailTeaser": {
+                "label": "Zeige Teaser Image auf Detailseite"
+            },
             "editor": {
                 "headerPlaceholder": "Überschrift",
                 "paragraphPlaceholder": "Fange an zu schreiben ...",
@@ -35,6 +44,23 @@
                 "warningMessage": "Deine Warnung ...",
                 "quotePlaceholder": "Verrate mir dein Zitat ...",
                 "quoteCaption": "... und den Autor"
+            },
+            "notification": {
+                "save-success": {
+                    "title": "Erfolreich!",
+                    "text": "Dein Blog Artikel wurde gespeichert."
+                },
+                "error": {
+                    "missingCategory": "Bitte wähle mind. eine Kategorie!"
+                }
+            },
+            "author": {
+                "label": "Autor",
+                "placeholder": "Wähle einen Autor"
+            },
+            "category": {
+                "label": "Kategorien",
+                "placeholder": "Wähle eine Kategorie"
             }
         },
         "elements": {
@@ -52,6 +78,9 @@
                     "elementHeadline": "Blog Detail Element",
                     "infoText": "Der Blog Inhalt wird automatisch in der Storefront ausgespielt. Derzeit gibt es keine Element Konfiguration."
                 }
+            },
+            "single-select": {
+                "label": "Wähle einen Blog Eintrag"
             }
         },
         "blocks": {
@@ -65,6 +94,84 @@
                     "label": "Blog Detail"
                 }
             }
+        }
+    },
+    "sas-blog-category": {
+        "general": {
+            "treeHeadline": "Blog Kategorien",
+            "mainMenuItemIndex": "Kategorien",
+            "mainMenuItemList": "Overview",
+            "descriptionTextModule": "Verwalte hier deine Kategorien.",
+            "headlineCategories": "Kategorien",
+            "placeholderSearchBar": "Suche in Kategorien...",
+            "buttonCreate": "Kategorie erstellen",
+            "buttonSafeCategory": "Speichern",
+            "descriptionLabel": "Beschreibung",
+            "messageSaveSuccess": "Kategorie \"{name}\" wurde gespeichert.",
+            "useAsLogo": "Use as display image",
+            "treeHeadSelected": "{count} ausgewählt",
+            "emptyStateHeadline": "Keine Kategorie ausgewählt",
+            "actions": {
+                "actionsDisabledInLanguage": "Kategorien können nur in der Default Sprache erstellt werden.",
+                "createSub": "Neue Unterkategorie",
+                "createBefore": "Neue Kategorie davor",
+                "createAfter": "Neue Kategorie danach"
+            }
+        }
+    },
+    "sas-blog-author": {
+        "general": {
+            "mainMenuItemList": "Autor"
+        },
+        "list": {
+            "textBlogOverview": "Autoren",
+            "buttonAdd": "Autor erstellen",
+            "messageEmpty": "Keine Autoren ...",
+            "table": {
+                "fullName": "Voller Name",
+                "displayName": "Anzeigename",
+                "email": "Email",
+                "salutation": "Anrede"
+            }
+        },
+        "detail": {
+            "title": "Autor",
+            "messageSaveSuccess": "Autor \"{name}\" wurde gespeichert.",
+            "buttonSave": "Speichern",
+            "buttonCancel": "Abbrechen",
+            "buttonEdit": "Editieren",
+            "firstName": {
+                "label": "Vorname",
+                "placeholder": "Gebe den Vornamen des Autors ein"
+            },
+            "lastName": {
+                "label": "Nachname",
+                "placeholder": "Gebe den Nachnamen des Autors ein"
+            },
+            "displayName": {
+                "label": "Anzeigename",
+                "placeholder": "Gebe den Anzeigenamen des Autors ein"
+            },
+            "email": {
+                "label": "Email",
+                "placeholder": "Gebe die Email Adresse des Autors ein"
+            },
+            "description": {
+                "label": "Beschreibung",
+                "placeholder": "Gebe eine kurze Beschreibung des Autors ein"
+            },
+            "salutation": {
+                "label": "Anrede",
+                "placeholder": "Anrede"
+            },
+            "media": {
+                "label": "Avatar des Autors"
+            }
+        }
+    },
+    "sas-blog-tree-item": {
+        "actions": {
+            "edit": "Editieren"
         }
     }
 }
